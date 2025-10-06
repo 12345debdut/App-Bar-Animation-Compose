@@ -53,7 +53,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.12345debdut"
             artifactId = "app-bar-animations"
-            version = "1.0.0"
+            version = "1.0.2"
 
             afterEvaluate {
                 from(components.getByName("release"))
