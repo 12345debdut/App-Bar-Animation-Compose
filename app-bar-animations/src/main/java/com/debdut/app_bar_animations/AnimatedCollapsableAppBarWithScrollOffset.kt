@@ -1,7 +1,6 @@
 package com.debdut.app_bar_animations
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.FloatState
@@ -17,7 +16,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 
 @Composable
-fun AnimatedCollapsableAppBar(
+fun AnimatedCollapsableAppBarWithScrollOffset(
     modifier: Modifier,
     toolbarHeight: Dp,
     toolBarComposable: @Composable () -> Unit,
@@ -42,7 +41,7 @@ fun AnimatedCollapsableAppBar(
 }
 
 @Composable
-internal fun rememberCollapsableNestedScrollConnectionAsState(toolbarHeight: Dp): NestedScrollConnectionState {
+private fun rememberCollapsableNestedScrollConnectionAsState(toolbarHeight: Dp): NestedScrollConnectionState {
     val toolbarHeightPx = with(LocalDensity.current) { toolbarHeight.toPx() }
     val toolbarOffsetHeightPx = remember { mutableFloatStateOf(0f) }
     val scrollConnection = remember {
@@ -84,7 +83,7 @@ internal fun rememberCollapsableNestedScrollConnectionAsState(toolbarHeight: Dp)
     )
 }
 
-data class NestedScrollConnectionState(
+internal data class NestedScrollConnectionState(
     val heightState: FloatState,
     val scrollConnection: NestedScrollConnection,
 )
